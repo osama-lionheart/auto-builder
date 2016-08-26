@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 24
@@ -20,6 +21,10 @@ android {
     }
 }
 
+kapt {
+    generateStubs = true
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -29,6 +34,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
 
-    apt project(':auto-builder-processor')
+    kapt project(':auto-builder-processor')
     compile project(':auto-builder-annotations')
 }
